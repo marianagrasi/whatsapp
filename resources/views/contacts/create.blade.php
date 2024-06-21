@@ -10,6 +10,12 @@
         <form action="{{ route('contacts.store') }}" method="POST" class="bg-white rounded-lg shadow p-6">
             @csrf
 
+            <x-validation-errors class="mb-4">
+            </x-validation-errors>
+
+
+
+
             <div class="mb-4">
                 <x-label class="mb-1">
                     Nombre de contacto
@@ -17,6 +23,21 @@
 
                 <x-input type="text" name="name" value="{{old('name')}}" class="w-full" placeholder="Ingrese el nombre del contacto"/>
 
+
+            </div>
+
+            <div class="mb-4">
+                <x-label class="mb-1">
+                    Correo electrónico
+                </x-label>
+
+                <x-input type="email" name="email" value="{{old('email')}}" class="w-full" placeholder="Ingrese el correo electrónico"/>
+
+            </div>
+            <div class="flex justify-end">
+                <x-button>
+                    Crear contacto
+                </x-button>
 
             </div>
 
