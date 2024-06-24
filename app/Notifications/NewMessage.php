@@ -27,7 +27,7 @@ class NewMessage extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['broadCast'];
+        return ['broadcast'];
     }
 
     /**
@@ -54,11 +54,11 @@ class NewMessage extends Notification
     }
 
 
-    public function toBroadCast($notificable){
+    public function toBroadcast($notificable){
         return new BroadcastMessage([
             // 'body'=> 'New message',
             // 'link'=> '#',
         ]);
-        
+
     }
 }

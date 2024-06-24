@@ -15,6 +15,20 @@ class ChatComponent extends Component
     public $contactChat, $chat;
     public $bodyMessage;
 
+    //OYENTES
+    public function getListeners()
+    {
+        $user_id = auth()->user()->id;
+
+        return [
+            "echo-notification:App.Models.User.{$user_id},notification" => 'render',
+            // "echo-presence:chat.1,here" => 'chatHere',
+            // "echo-presence:chat.1,joining" => 'chatJoining',
+            // "echo-presence:chat.1,leaving" => 'chatLeaving',
+        ];
+    }
+
+
     //Propiedad computadas
 
     public function getContactsProperty()
@@ -96,8 +110,9 @@ class ChatComponent extends Component
             'user_id' => auth()->user()->id
 
         ]);
+
         Notification::send($this->users_notifications, new \App\Notifications\NewMessage());
-        
+
         $this->reset('bodyMessage', 'contactChat');
     }
 
